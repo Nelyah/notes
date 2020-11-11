@@ -1,30 +1,30 @@
-#include <iostream>
-#include <filesystem>
-#include <vector>
-#include <set>
-
 #include "directoryRunner.h"
 
-int main(int argc, char *argv[])
+#include <filesystem>
+#include <iostream>
+#include <set>
+#include <vector>
+
+int main(int argc, char* argv[])
 {
     try
     {
-    std::filesystem::recursive_directory_iterator it;
-    DirectoryRunner dirr = DirectoryRunner();
+        std::filesystem::recursive_directory_iterator it;
+        filetools::DirectoryRunner dirr = filetools::DirectoryRunner();
 
-    dirr.run();
+        dirr.addFileTypeInclusions(".cpp");
+        dirr.run();
 
-    for (auto& el : dirr.getlist())
+        for (auto& el : dirr.getlist())
+        {
+            std::cout << el << std::endl;
+        }
+    }
+    catch (const std::string& error)
     {
-        std::cout << el << std::endl;
+        std::cerr << error << std::endl;
+        return -1;
     }
-    }
-    catch (const std::string& error) 
-    {                                
-      std::cerr << error << std::endl;    
-      return -1;
-    }                                
 
     return 0;
-
 }
