@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
     try
     {
         std::filesystem::recursive_directory_iterator it;
-        filetools::DirectoryRunner dirr = filetools::DirectoryRunner();
+        filetools::DirectoryRunner dirr = filetools::DirectoryRunner("src");
 
         dirr.addFileTypeInclusions(".cpp");
         dirr.run();

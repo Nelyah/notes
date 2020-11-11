@@ -41,7 +41,7 @@ void DirectoryRunner::addToFileList(const std::filesystem::directory_entry& curr
 void DirectoryRunner::run()
 {
     std::filesystem::recursive_directory_iterator it;
-    for (const auto& dirEntry : std::filesystem::recursive_directory_iterator("."))
+    for (const auto& dirEntry : std::filesystem::recursive_directory_iterator(mStartingDirectory))
     {
         const auto entryExt = dirEntry.path().extension();
         if ((mFileTypeInclusions.empty() && mFileTypeExclusions.count(entryExt) == 0) ||

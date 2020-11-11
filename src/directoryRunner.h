@@ -19,6 +19,15 @@ class DirectoryRunner
 
   public:
     DirectoryRunner(){};
+    DirectoryRunner(const path& startingDirectory) :
+        mStartingDirectory(directory_entry(startingDirectory))
+    {
+        if (!mStartingDirectory.is_directory())
+        {
+            throw std::string(
+                "Error: Specified starting point is not a directory!");
+        }
+    }
 
     void addFileTypeExclusions(const std::string& fileType);
     void addFileTypeInclusions(const std::string& fileType);
