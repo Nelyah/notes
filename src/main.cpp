@@ -13,6 +13,8 @@ int main(int argc, char* argv[])
         filetools::DirectoryRunner dirr = filetools::DirectoryRunner("src");
 
         dirr.addFileTypeInclusions(".cpp");
+        dirr.addFileTypeInclusions(".h");
+        dirr.addFileTypeExclusions(".cpp");
         dirr.run();
 
         for (auto& el : dirr.getlist())
